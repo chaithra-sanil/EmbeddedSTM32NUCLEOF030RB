@@ -100,7 +100,7 @@ int main(void)
      * Required before configuring GPIO registers
      * ===================================================== */
     RCC->AHBENR |= GPIOA_EN;
-
+    char str[10] = "hello";
 
     /* =====================================================
      * Step 2: Configure PA2 as Alternate Function
@@ -166,7 +166,16 @@ int main(void)
     while (1)
     {
         // Send character 'A'
-        transmit('A');
+
+        transmit('a');
+
+        /*If u want to send string then enbale belwo
+          	for(int i=0;str[i] != '\0';i++){
+              transmit(str[i]);
+          	}
+          	transmit('\n');
+          	transmit('\r');
+		*/
 
         // Small delay to avoid flooding terminal
         for (volatile int i = 0; i < 100000; i++);
